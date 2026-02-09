@@ -1,0 +1,342 @@
+/* =========================================
+   1. GLOBAL PAGE SETUP
+   ========================================= */
+.home-container {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f5f9; 
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 95%;
+    padding: 30px 20px;
+}
+
+/* =========================================
+   2. NAVBAR
+   ========================================= */
+.home-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-right: 20px;
+}
+
+.home-links .ad {
+    text-decoration: none;
+    font-size: 15px;         
+    font-weight: 600;
+    color: #64748b;
+    padding: 10px 20px;      
+    background-color: #e2e8f0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+}
+
+.home-links .ad:hover {
+    background-color: #cbd5e1;
+    color: #0f172a;
+    transform: translateY(-2px);
+}
+
+.home-links .ad.active {
+    background-color: #1e293b; 
+    color: #ffffff;
+    border-color: #1e293b;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   3. HEADERS
+   ========================================= */
+.page1 {
+    text-align: center; 
+    margin-bottom: 30px;
+}
+
+.page1 h1 {
+    font-size: 28px;
+    color: #1e293b;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* =========================================
+   4. METRIC CARDS
+   ========================================= */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.card-2 {
+    background-color: rgb(230, 228, 228); 
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-left: 6px solid #10b981; 
+    display: flex;
+    flex-direction: column;
+}
+
+.card-2:nth-child(2) {
+    border-left-color: #0f172a; 
+}
+
+.card-2 label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.value2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* =========================================
+   5. TABLE STYLES (FIXED ALIGNMENT)
+   ========================================= */
+.chart-section {
+    background-color: rgb(230, 228, 228);
+  
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.section-titl {
+    font-size: 25px;
+    color: #334155;
+    margin-bottom: 20px;
+    margin-right:200px;
+    margin-left:200px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.ps-table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* --- HEADER ALIGNMENT --- */
+.ps-table thead th {
+    background-color: #374151; /* Dark Grey */
+    color: #ffffff;            /* White Text */
+    font-weight: 600;
+    padding: 16px;
+    text-transform: uppercase;
+    font-size: 14px;
+    
+    /* Center align headers by default */
+    text-align: center; 
+}
+
+/* --- DATA ALIGNMENT --- */
+.ps-table tbody td {
+    padding: 16px;
+    color: #1e293b;
+    font-size: 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid #e2e8f0;
+
+    /* Center align data by default */
+    text-align: center;
+}
+
+/* --- EXCEPTIONS: Left Align the first 2 columns --- */
+/* (Trade ID and Investor looks better left-aligned) */
+.ps-table th:nth-child(1), .ps-table td:nth-child(1),
+.ps-table th:nth-child(2), .ps-table td:nth-child(2) {
+    text-align: left;
+    padding-left: 24px; /* Extra padding for neatness */
+}
+
+/* Hover Effect */
+.ps-table tbody tr {
+    background-color: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background 0.2s;
+}
+.ps-table tbody tr:hover {
+    background-color: #e2e8f0;
+}
+
+/* =========================================
+   6. BUTTONS & BADGES
+   ========================================= */
+.ps-btn-execute {
+    background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(20, 184, 166, 0.2);
+    transition: transform 0.2s;
+    
+    /* Ensure button doesn't stretch */
+    display: inline-block; 
+}
+
+.ps-btn-execute:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(20, 184, 166, 0.3);
+}
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.status-badge.pending {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.status-badge.executed {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+/* =========================================
+   REFINED RESPONSIVE SYSTEM
+   ========================================= */
+
+/* --- Tablet / Small Laptop (1024px) --- */
+@media (max-width: 1024px) {
+    .main-content {
+        width: 100%;
+        padding: 20px 15px;
+    }
+    .section-titl {
+        margin: 0 0 20px 0;
+        text-align: center;
+    }
+}
+
+/* --- Mobile Landscape / Large Phones (768px and below) --- */
+@media (max-width: 768px) {
+    /* Navbar: Change to 2x2 Grid to prevent overlapping on iPhone Pro Max */
+    .home-links {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding-right: 0;
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .home-links .ad {
+        padding: 10px 5px;
+        font-size: 13px;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Metric Cards: Stack vertically */
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Table Transformation to Cards */
+    .ps-table thead {
+        display: none; /* Hide headers */
+    }
+
+    .ps-table, .ps-table tbody, .ps-table tr, .ps-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .ps-table tr {
+        margin-bottom: 20px;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        background: #ffffff;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .ps-table td {
+        display: flex;
+        justify-content: space-between; /* Label left, Value right */
+        align-items: center;
+        padding: 12px 10px;
+        border-bottom: 1px solid #f1f5f9;
+        text-align: right;
+        min-height: 45px;
+    }
+
+    .ps-table td::before {
+        content: attr(data-label); /* Pulls text from data-label attribute */
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 10px;
+        color: #64748b;
+        text-align: left;
+        flex-shrink: 0;
+    }
+
+    .ps-table td:last-child {
+        border-bottom: none;
+        flex-direction: column; /* Stack button below text */
+        gap: 10px;
+        padding-top: 15px;
+    }
+
+    .ps-btn-execute {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* --- Small Phones (430px and below - iPhone 14/15 Pro Max) --- */
+@media (max-width: 480px) {
+    .page1 h1 {
+        font-size: 22px;
+    }
+
+    .value2 {
+        font-size: 1.8rem;
+    }
+
+    .home-links {
+        grid-template-columns: 1fr; /* Stack buttons in 1 column if screen is very narrow */
+    }
+
+    .home-links .ad {
+        font-size: 12px;
+    }
+}

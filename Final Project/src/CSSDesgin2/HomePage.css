@@ -1,0 +1,93 @@
+/* Hero Section Container */
+.home-container {
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps image steady while scrolling */
+  color:black;
+  /* 1. More transparent background (0.8 changed to 0.4) */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+    url("../logo/back.png");
+}
+
+.home-main-hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px; /* Increased padding for more breathing room */
+}
+
+/* Content Wrapper */
+.hero-content {
+  max-width: 800px;
+  animation: fadeIn 1.2s ease-out;
+  color:black;
+}
+
+/* Large Central Logo */
+.hero-logo-large {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+}
+
+/* Text Styling - UPDATED TO DARK COLORS */
+.hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #0b0b0c; /* Dark Slate instead of White */
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #111214; /* Sophisticated dark grey */
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 4px;
+  background-color: #08b363; /* PortSure Green for a pop of color */
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+.hero-description {
+  font-size: 1.3rem;
+  font-weight: 30px;
+  font-family: bold;
+  color: #0f0f12; /* Readable dark grey */
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- BUTTON & NAVIGATION (DARK THEME) --- */
+.nav-actions .admin {
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #16181c; /* Deep Midnight Blue/Dark Navy */
+  padding: 10px 24px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  border: 1px solid #0f172a;
+}
+
+.nav-actions .admin:hover {
+  background-color: #1e293b; /* Slightly lighter on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer Styling */
+

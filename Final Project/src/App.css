@@ -1,0 +1,57 @@
+/* Global Reset for Vite */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* 1. Added a light overlay so text is readable over the image */
+  /* Replace the URL with your chosen image path or URL */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+    url("logo/back.png");
+  
+  /* 2. Proper background sizing */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+  color-scheme: light; /* Switched to light as default for your theme */
+  color: #2d3748;      /* Changed to a dark grey for contrast on light background */
+  background-color: #f7fafc; /* Fallback light color */
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh; /* Ensures background covers the whole screen */
+}
+
+/* Re-incorporating your logo animations */
+.logo {
+  height: 3em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #38cd87aa); /* PortSure Green */
+}
+
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-animate {
+    animation: logo-spin infinite 20s linear;
+  }
+}

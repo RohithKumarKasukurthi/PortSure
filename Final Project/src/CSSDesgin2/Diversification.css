@@ -1,0 +1,187 @@
+/* --- Main Container & Layout --- */
+
+.ps-enterprise-wrapper {
+     background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps image steady while scrolling */
+  color:black;
+  /* 1. More transparent background (0.8 changed to 0.4) */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+    url("../logo/back.png");
+    min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.main-section {
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.diversification-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Sidebar and Main Content */
+    gap: 30px;
+    align-items: start;
+}
+
+/* --- Left Sidebar (Glass Card) --- */
+.ps-glass-card {
+    background: rgba(191, 189, 189, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-border {
+    border-top: 4px solid #7c8fbb;
+}
+
+.ps-tag {
+    display: inline-block;
+    background: #eff6ff;
+    color: #101216;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.card-header h3 {
+    font-size: 1.25rem;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.stat-row {
+    margin-bottom: 15px;
+}
+
+.stat-row label {
+    display: block;
+    font-size: 12px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+/* --- Right Side: Content Area --- */
+.ps-form-content{
+     background-color: rgba(191, 189, 189, 0.8);
+}
+.ps-form-header {
+    margin-bottom: 30px;
+   
+}
+
+.ps-form-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.ps-form-header p {
+    color: #64748b;
+}
+
+/* --- Diversification Grid --- */
+.diversification-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    
+}
+
+.ps-input-card {
+    background: rgb(173, 171, 171);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Audit Table --- */
+.table-container {
+    background: rgb(173, 171, 171);
+    border-radius: 20px;
+    padding: 20px;
+    color:black;
+    border: 1px solid #f1f5f9;
+}
+
+.ps-audit-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ps-audit-table th {
+    
+    padding: 12px;
+    font-size: 17px;
+    color: black;
+    
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ps-audit-table td {
+    padding: 16px 12px;
+    font-size: 15px;
+    color: black;
+    border-bottom: 1px solid #f8fafc;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+/* --- Color Dots --- */
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.equity { background: #2563eb; }
+.bond { background: #10b981; }
+.derivative { background: #f59e0b; }
+
+
+/* --- Error State --- */
+.error-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.error-card {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+
+.ps-primary-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+}

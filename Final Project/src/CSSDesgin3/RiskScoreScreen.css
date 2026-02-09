@@ -1,0 +1,393 @@
+/* --- Base Container --- */
+.dashboard-content { 
+    font-family: 'Segoe UI', Roboto, sans-serif; 
+    min-height: 100vh; 
+    padding: 20px;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+        url("../logo/back.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #0f172a; 
+}
+
+/* --- Header & Typography --- */
+.content8 {
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
+}
+
+.content8 h1 {
+    margin-top: 50px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+/* --- Layout Grid --- */
+.flex-row { 
+    display: flex; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+    margin: 50px;
+}
+
+.dashboard-section { 
+    color: black; 
+    padding: 25px; 
+    border-radius: 12px; 
+    flex: 1; 
+    min-width: 320px; 
+    background-color: rgba(230, 228, 228, 0.9);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+}
+
+/* --- Inputs & Selectors --- */
+.input-group { margin-bottom: 20px; }
+.input-group label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: bold; 
+    font-size: 14px; 
+    color: #334155;
+}
+
+/* Ensure select and inputs align better */
+input, select { 
+    padding: 10px; 
+    border: 1px solid #6b6868; 
+    border-radius: 6px; 
+    width: 100%; /* Changed to 100% for better mobile responsiveness */
+    background: white;
+}
+
+.asset-input { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 12px; 
+    background: rgba(255,255,255,0.5);
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.asset-input input {
+    width: 80px;
+    text-align: center;
+}
+
+.calc-btn { 
+    width: 100%; 
+    padding: 12px; 
+    background: #475569; 
+    color: white; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    margin-top: 15px; 
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.calc-btn:hover { background: #1e293b; }
+.calc-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+
+/* --- Risk Gauge --- */
+.section-score { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+/* --- Risk Gauge Section --- */
+.section-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* The Outer Circle */
+.score-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /* Creates a "track" for the gauge */
+    border: 10px solid #e2e8f0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    background: white;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* The Large Score Number */
+.score-num {
+    display: block;
+    font-size: 56px;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+/* The Risk Badge (Low, Medium, High) */
+.risk-badge {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+/* Dynamic Colors based on State */
+.risk-low { 
+    background-color: #dcfce7; 
+    color: #166534; 
+    border: 1px solid #bbf7d0;
+}
+
+.risk-med { 
+    background-color: #fef9c3; 
+    color: #854d0e; 
+    border: 1px solid #fef08a;
+}
+
+.risk-high { 
+    background-color: #fee2e2; 
+    color: #991b1b; 
+    border: 1px solid #fecaca;
+    /* Subtle pulse animation for high risk */
+    animation: risk-pulse 2s infinite;
+}
+
+/* Optional: Label above the gauge */
+.section-score h3 {
+    color: #030303;
+    font-size: 20px;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+@keyframes risk-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+.score-num { display: block; font-size: 72px; font-weight: 800; color: #1e293b; line-height: 1; margin-bottom: 10px;}
+
+.risk-badge { padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: bold; text-transform: uppercase; }
+
+/* --- Recharts Label Styling --- */
+/* This ensures the static labels you added in the JS are readable */
+.recharts-pie-label-text {
+    fill: #1e293b !important;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* --- Table --- */
+.section-table { margin: 50px; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.simple-table { width: 100%; border-collapse: collapse; }
+.simple-table th { background: #f1f5f9; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.simple-table th, .simple-table td { text-align: left; padding: 15px; border-bottom: 1px solid #e2e8f0; }
+
+/* Status tags for the table */
+.status-tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+
+/* --- Chart Section Container --- */
+.section-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(230, 228, 228, 0.9); /* Matching your other sections */
+    border-radius: 12px;
+    padding: 10px;
+    
+}
+
+.section-chart h3 {
+    margin-bottom: 50px;
+    font-size: 20px;
+    color: #1e293b;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+
+}
+
+/* --- Recharts SVG Customization --- */
+
+/* Static Labels (Equity, Bond, etc.) */
+.recharts-pie-label-text {
+    fill: #334155 !important; /* Dark slate for readability */
+    font-size: 15px;
+    font-weight: 600;
+    font-family: sans-serif;
+    margin-top:20px;
+}
+
+/* Label Connector Lines */
+.recharts-pie-label-line {
+     margin-top:20px;
+    stroke: #64748b !important; /* Muted gray for lines */
+    stroke-width: 1px;
+    opacity: 0.6;
+}
+
+/* Tooltip Styling */
+.recharts-tooltip-wrapper {
+    outline: none;
+    margin-top:20px;
+}
+
+.recharts-default-tooltip {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    padding: 10px !important;
+}
+
+/* Pie Slice Hover Effect */
+.recharts-pie-sector:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+    transition: filter 0.2s ease;
+}
+
+/* Responsive Fix for small containers */
+.section-chart .recharts-responsive-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+/* --- Input Section Container --- */
+.section-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background-color: rgba(230, 228, 228, 0.9);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.section-inputs h3 {
+    font-size: 1.2rem;
+    color: #1e293b;
+    border-bottom: 2px solid #cbd5e1;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+/* --- Grouping Labels and Controls --- */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Dropdown Selectors --- */
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 0.95rem;
+    color: #1e293b;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.input-group select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-group select:disabled {
+    background-color: #e2e8f0;
+    cursor: not-allowed;
+    color: #64748b;
+}
+
+/* --- Allocation Rows --- */
+.asset-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    transition: border 0.2s;
+}
+
+.asset-input:hover {
+    border-color: #cbd5e1;
+}
+
+.asset-input span {
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.9rem;
+}
+
+.asset-input input {
+    width: 80px;
+    padding: 8px;
+    text-align: right;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-family: 'Courier New', Courier, monospace; /* Monospace for numbers */
+    font-weight: bold;
+    color: #2563eb;
+}
+
+/* --- Commit Button --- */
+.calc-btn {
+    width: 100%;
+    padding: 14px;
+    background: #1e293b;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.calc-btn:hover:not(:disabled) {
+    background: #334155;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.calc-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.calc-btn:disabled {
+    background: #94a3b8;
+    opacity: 0.6;
+    cursor: not-allowed;
+}

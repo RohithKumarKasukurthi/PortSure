@@ -1,0 +1,116 @@
+/* Navbar Container */
+.home-header {
+  background-color: #757373; /* Matches your gray theme */
+  padding: 0 1.5rem;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.home-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-logo1 {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.home-h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.sp { color: #38cd87; }
+
+/* Links Alignment - FIX: Removed 580px margin */
+.home-links {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  margin-left: auto; 
+}
+
+/* Button Styling for .ad class */
+.home-links .ad {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
+  color: white;
+  background-color: #1a2024;
+  transition: all 0.2s ease;
+}
+
+.home-links .ad.active {
+  background-color: #38cd87;
+  color: #1a2024;
+}
+
+.home-links .logout-btn {
+  background-color: #ff6b6b;
+}
+
+/* Mobile Responsiveness for Navbar */
+@media (max-width: 600px) {
+  .home-header {
+    height: auto;
+    padding: 10px 1rem;
+    background-color: #757373;
+    width:fit-content;
+  }
+
+  .home-nav {
+    flex-direction: column; /* Stack logo above links */
+    gap: 10px;
+    background-color: #757373;
+  }
+
+  .home-links {
+    margin-left: 50px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow buttons to go to next line if needed */
+    gap: 8px;
+  }
+
+  .home-links .ad {
+    padding: 6px 10px;
+    font-size: 12px;
+    flex: 1; /* Buttons grow to fill space evenly */
+    text-align: center;
+  }
+}
+
+/* Extra small screens (like your 261px screenshot) */
+@media (max-width: 350px) {
+  .home-h2 {
+    font-size: 1rem;
+  }
+  
+  .home-links .ad {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+}

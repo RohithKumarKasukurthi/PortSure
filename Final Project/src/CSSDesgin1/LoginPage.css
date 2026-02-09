@@ -1,0 +1,213 @@
+/* Page background */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: black;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+    url("../logo/back.png");
+}
+
+/* Card styling */
+.auth-card {
+  background: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
+  width: 380px;
+  text-align: center;
+}
+
+/* Role selector tabs */
+.role-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: #819fc7;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.role-selector button {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.role-selector button:hover {
+  background: #cbd5e1;
+}
+
+.role-selector button.active {
+  background: #6e6ab7;
+  color: #ffffff;
+}
+
+/* Input fields */
+.input-field {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.input-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field input:focus {
+  border-color: #7774b5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  outline: none;
+}
+
+/* Password wrapper */
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-visibility {
+  background: #f3f4f6;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.toggle-visibility:hover {
+  background: #e5e7eb;
+}
+
+/* Admin key hint */
+.field-hint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Login button */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #837edc, #797ab8);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  box-shadow: 0 6px 12px rgba(79, 70, 229, 0.25);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.login-btn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+}
+
+/* Registration link */
+.reg-link {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: #374151;
+}
+
+.reg-link a {
+  color: #7672c6;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reg-link a:hover {
+  text-decoration: underline;
+}
+
+/* Icon button */
+.icon-toggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 44px;
+  background: #f3f4f6;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  padding: 0;
+}
+
+.icon-toggle:hover {
+  background: #e5e7eb;
+  border-color: #c7d2fe;
+}
+
+.icon-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.icon-toggle:hover svg path,
+.icon-toggle:hover svg circle {
+  stroke: #374151;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-card {
+    width: 90%;
+    padding: 24px;
+  }
+}
+
+/* --- FIX FOR DOUBLE EYE ICON --- */
+/* Remove default browser eye icon in Edge/IE */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+/* Remove default browser eye icon in Chrome/Safari */
+input[type="password"]::-webkit-contacts-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}

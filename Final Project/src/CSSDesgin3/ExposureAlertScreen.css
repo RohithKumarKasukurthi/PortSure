@@ -1,0 +1,203 @@
+/* Layout & Background */
+.home {
+  background-color: #f4f7fa; /* Slightly cooler grey for a professional feel */
+  min-height: 100vh;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* MAIN CONTAINER: The secret to varying widths */
+.exposure-main-content {
+  max-width: 1400px; /* Room for the wide table */
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center; /* This prevents narrow cards from stretching */
+}
+
+.exposure-title {
+  text-align: center;
+  color: #1a365d;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-top: 40px;
+  text-transform: uppercase;
+}
+
+/* Base Card Styling */
+.selection-card, .data-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  border: 1px solid #e2e8f0;
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
+}
+
+/* 1. NARROW CARDS: Portfolio Selection & Current Exposure */
+.selection-card, 
+.exposure-details {
+  width: 100%;
+  max-width: 850px; /* Keeps these focused and readable */
+}
+
+/* 2. WIDE CARD: Historical Log */
+.history-card {
+  width: 100%;
+  max-width: 1300px; /* Forces this specific card to be wider */
+}
+
+.card-header-title {
+  font-size: 1.25rem;
+  color: #2d3748;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f1f5f9;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Form Grid */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 10px;
+}
+
+.simple-select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  background-color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.simple-select:focus {
+  outline: none;
+  border-color: #3182ce;
+}
+
+/* Alert Styling */
+.warning-alert {
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  color: #c53030;
+  padding: 18px 24px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.success-alert {
+  background: #f0fff4;
+  border: 1px solid #9ae6b4;
+  color: #22543d;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.alert-btn {
+  background: #e53e3e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.alert-btn:hover {
+  background: #c53030;
+}
+
+/* Table Design */
+.simple-exposure-table, .simpletable1 {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.simple-exposure-table thead, .simpletable1 thead {
+  background: #f8fafc;
+}
+
+.simple-exposure-table th, .simpletable1 th {
+  text-align: left;
+  padding: 16px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #718096;
+  border-bottom: 2px solid #edf2f7;
+}
+
+.simple-exposure-table td, .simpletable1 td {
+  padding: 16px;
+  border-bottom: 1px solid #edf2f7;
+  color: #2d3748;
+}
+
+/* Zebra Striping for History Table */
+.simpletable1 tbody tr:nth-child(even) {
+  background-color: #fbfcfd;
+}
+
+/* Status Badges */
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 99px;
+  display: inline-block;
+}
+
+.status-badge.ok { background: #c6f6d5; color: #22543d; }
+.status-badge.breach { background: #fed7d7; color: #822727; }
+
+/* History Delete Button */
+.delete-btn-style {
+  background: #fff;
+  color: #e53e3e;
+  border: 1.5px solid #fed7d7;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.delete-btn-style:hover {
+  background: #fff5f5;
+  border-color: #e53e3e;
+  transform: translateY(-1px);
+}
+
+
+/* Animations */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
