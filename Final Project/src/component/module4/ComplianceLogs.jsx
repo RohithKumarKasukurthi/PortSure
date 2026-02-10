@@ -131,17 +131,17 @@ export default function ComplianceLogs() {
             {logs.length > 0 ? (
               logs.map((log) => (
                 <tr key={log.logId}>
-                  <td>{log.logId}</td>
-                  <td>PF-{log.portfolioId}</td>
-                  <td>{log.regulationType}</td>
-                  <td className="findings-text">{log.findings}</td>
-                  <td>{log.date}</td>
-                  <td>
+                  <td data-label="Log ID">{log.logId}</td>
+                  <td data-label="Portfolio ID">PF-{log.portfolioId}</td>
+                  <td data-label="Regulation Type">{log.regulationType}</td>
+                  <td data-label="Findings" className="findings-text">{log.findings}</td>
+                  <td data-label="Date">{log.date}</td>
+                  <td data-label="Status">
                     <span className={`status-pill ${String(log.status || "").toLowerCase()}`}>
                       {log.status}
                     </span>
                   </td>
-                  <td>
+                  <td data-label="Actions">
                     <button
                       className="delete-btn-small"
                       onClick={() => deleteLog(log.logId)}

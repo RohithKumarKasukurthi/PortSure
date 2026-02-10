@@ -6,13 +6,13 @@ import * as XLSX from "xlsx";
 import Navbar from "../../Navbar/Navbar";
 import logo from "../../logo/logo.png";
 import "../../CSSDesgin5/ReportExport.css";
- 
+
 function ExportReport() {
   const location = useLocation();
   const navigate = useNavigate();
- 
+
   const data = location.state?.reportData;
- 
+
   if (!data) {
     return (
       <div className="report-export-container">
@@ -21,7 +21,7 @@ function ExportReport() {
       </div>
     );
   }
- 
+
   const {
     portfolioId,
     portfolioName,
@@ -32,16 +32,16 @@ function ExportReport() {
     metrics,
     generatedAt
   } = data;
- 
+
   const downloadPDF = () => {
     const doc = new jsPDF();
- 
+
     doc.setFontSize(16);
     doc.text("Portfolio Performance Report", 14, 15);
- 
+
     doc.setFontSize(10);
     doc.text(`Generated on: ${generatedAt}`, 14, 22);
- 
+
     autoTable(doc, {
       startY: 30,
       head: [[
@@ -59,7 +59,7 @@ function ExportReport() {
         profitStatus
       ]]
     });
- 
+
     autoTable(doc, {
       startY: doc.lastAutoTable.finalY + 10,
       head: [["Metric", "Value"]],
@@ -69,10 +69,10 @@ function ExportReport() {
         ["Risk Score", metrics.riskAdjusted]
       ]
     });
- 
+
     doc.save(`${portfolioName}_Report.pdf`);
   };
- 
+
   const downloadExcel = () => {
     const sheetData = [
       ["Portfolio Performance Report"],
@@ -91,14 +91,14 @@ function ExportReport() {
       [],
       ["Generated At", generatedAt]
     ];
- 
+
     const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Portfolio Report");
- 
+
     XLSX.writeFile(workbook, `${portfolioName}_Report.xlsx`);
   };
- 
+
   const myLoginOptions = (
     <div className="home-links">
       <Link to="/investordashboard" className="ad">Home</Link>
@@ -106,15 +106,15 @@ function ExportReport() {
       <Link to="/P2" className="ad active">Export Report</Link>
     </div>
   );
- 
+
   return (
     <div className="report-export-page">
       <Navbar loginOptions={myLoginOptions} />
- 
+
       <div className="report-export-container">
         <div className="export-preview">
           <h1>Portfolio Performance Report</h1>
- 
+
           <table className="history-table">
             <thead>
               <tr>
@@ -127,19 +127,19 @@ function ExportReport() {
             </thead>
             <tbody>
               <tr>
-                <td>PF-{portfolioId}</td>
-                <td>₹ {investedAmount}</td>
-                <td>₹ {finalValue.toFixed(2)}</td>
-                <td style={{ color: gainLoss >= 0 ? "green" : "red" }}>
+                <td data-label="Portfolio ID">PF-{portfolioId}</td>
+                <td data-label="Initial Investment">₹ {investedAmount}</td>
+                <td data-label="Final Value">₹ {finalValue.toFixed(2)}</td>
+                <td data-label="Gain / Loss" style={{ color: gainLoss >= 0 ? "green" : "red" }}>
                   ₹ {gainLoss.toFixed(2)}
                 </td>
-                <td style={{ fontWeight: "bold" }}>
+                <td data-label="Status" style={{ fontWeight: "bold" }}>
                   {profitStatus}
                 </td>
               </tr>
             </tbody>
           </table>
- 
+
           <div className="export-actions">
             <button className="pdf1" onClick={downloadPDF}>
               Download PDF
@@ -150,7 +150,7 @@ function ExportReport() {
           </div>
         </div>
       </div>
- 
+
       <footer className="home-footer1">
         <img src={logo} alt="logo" className="hero-logo-footer" />
         <h5>© 2026 PortSure – Portfolio Risk Analysis</h5>
@@ -158,6 +158,5 @@ function ExportReport() {
     </div>
   );
 }
- 
+
 export default ExportReport;
- 

@@ -22,68 +22,68 @@ export default function AssetManager() {
 
   const navigate = useNavigate();
 
- useEffect(() => {
-  const fetchManagerData = async () => {
-    try {
-     
-      const response = await fetch('http://localhost:8303/api/portfolios/all');
-      if (!response.ok) {
-        const text = await response.text();
-        console.error("Portfolio fetch failed:", response.status, text);
-        return;
-      }
+  useEffect(() => {
+    const fetchManagerData = async () => {
+      try {
 
-      const portfolios = await response.json();
-
-      const investorIds = Array.from(
-        new Set(
-          portfolios
-            .map(p => p.investorId)
-            .filter(id => id !== null && id !== undefined)
-        )
-      );
-
-      // 3) Fetch investors (parallel)
-      const investorResults = await Promise.allSettled(
-        investorIds.map(async (id) => {
-          const invRes = await fetch(`http://localhost:8302/api/investors/${id}`);
-          if (!invRes.ok) throw new Error(`Investor ${id} fetch failed (${invRes.status})`);
-          const inv = await invRes.json();
-          return { id, fullName: inv.fullName };
-        })
-      );
-
-      // 4) Build lookup map
-      const investorNameById = {};
-      for (const r of investorResults) {
-        if (r.status === "fulfilled") {
-          investorNameById[r.value.id] = r.value.fullName || "N/A";
+        const response = await fetch('http://localhost:8303/api/portfolios/all');
+        if (!response.ok) {
+          const text = await response.text();
+          console.error("Portfolio fetch failed:", response.status, text);
+          return;
         }
+
+        const portfolios = await response.json();
+
+        const investorIds = Array.from(
+          new Set(
+            portfolios
+              .map(p => p.investorId)
+              .filter(id => id !== null && id !== undefined)
+          )
+        );
+
+        // 3) Fetch investors (parallel)
+        const investorResults = await Promise.allSettled(
+          investorIds.map(async (id) => {
+            const invRes = await fetch(`http://localhost:8302/api/investors/${id}`);
+            if (!invRes.ok) throw new Error(`Investor ${id} fetch failed (${invRes.status})`);
+            const inv = await invRes.json();
+            return { id, fullName: inv.fullName };
+          })
+        );
+
+        // 4) Build lookup map
+        const investorNameById = {};
+        for (const r of investorResults) {
+          if (r.status === "fulfilled") {
+            investorNameById[r.value.id] = r.value.fullName || "N/A";
+          }
+        }
+
+        // 5) Build table rows
+        const formattedData = portfolios.map(port => ({
+          portfolio_id: port.portfolioId,
+          investor_id: port.investorId,
+          investor_name: investorNameById[port.investorId] || "N/A",
+          equity: port.equityPercentage || 0,
+          bond: port.bondPercentage || 0,
+          derivative: port.derivativePercentage || 0,
+          quantity: port.quantity || 0,
+          price: port.price || port.investedAmount || 0,
+          status: port.status ? port.status.toString().toUpperCase() : "PENDING"
+        }));
+
+        setSettlementData(formattedData);
+      } catch (error) {
+        console.error("Database connection error:", error);
+      } finally {
+        setIsLoading(false);
       }
+    };
 
-      // 5) Build table rows
-      const formattedData = portfolios.map(port => ({
-        portfolio_id: port.portfolioId,
-        investor_id: port.investorId,
-        investor_name: investorNameById[port.investorId] || "N/A",
-        equity: port.equityPercentage || 0,
-        bond: port.bondPercentage || 0,
-        derivative: port.derivativePercentage || 0,
-        quantity: port.quantity || 0,
-        price: port.price || port.investedAmount || 0,
-        status: port.status ? port.status.toString().toUpperCase() : "PENDING"
-      }));
-
-      setSettlementData(formattedData);
-    } catch (error) {
-      console.error("Database connection error:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  fetchManagerData();
-}, []);
+    fetchManagerData();
+  }, []);
 
   useEffect(() => {
     const fetchProfileFromDB = async () => {
@@ -298,9 +298,9 @@ export default function AssetManager() {
                     ) : filteredData.length > 0 ? (
                       filteredData.map((s) => (
                         <tr key={s.portfolio_id}>
-                          <td style={{ fontWeight: 'bold' }}>PF-{s.portfolio_id}</td>
-                          <td>{s.investor_name}</td>
-                          <td>
+                          <td data-label="Portfolio ID" style={{ fontWeight: 'bold' }}>PF-{s.portfolio_id}</td>
+                          <td data-label="Investor Name">{s.investor_name}</td>
+                          <td data-label="Asset Allocation">
                             {s.status === "PENDING" ? (
                               <span style={{ color: '#94a3b8', fontStyle: 'italic' }}>
                                 None (Awaiting Allocation)
@@ -311,14 +311,14 @@ export default function AssetManager() {
                               </div>
                             )}
                           </td>
-                          <td>{s.quantity}</td>
-                          <td>${s.price?.toLocaleString()}</td>
-                          <td>
+                          <td data-label="Quantity">{s.quantity}</td>
+                          <td data-label="Price">${s.price?.toLocaleString()}</td>
+                          <td data-label="Status">
                             <span className={`status-pill ${s.status.toLowerCase()}`}>
                               {s.status === "APPROVED" ? "EXECUTED" : s.status}
                             </span>
                           </td>
-                          <td>
+                          <td data-label="Actions">
                             <button
                               className="view-btn"
                               onClick={() => navigate('/Driver', { state: { portfolio: s } })}

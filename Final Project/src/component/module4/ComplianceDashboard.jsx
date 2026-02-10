@@ -21,7 +21,7 @@ function SummaryCard({ title, value, variant = "default", icon: Icon }) {
 export default function ComplianceDashboard() {
   const navigate = useNavigate();
 
-  const [activeView, setActiveView] = useState("dashboard"); 
+  const [activeView, setActiveView] = useState("dashboard");
   const [profileOpen, setProfileOpen] = useState(false);
 
   const loggedInUser = JSON.parse(localStorage.getItem("user") || "{}");
@@ -242,9 +242,9 @@ export default function ComplianceDashboard() {
                   {alerts.length > 0 ? (
                     alerts.map((alert, idx) => (
                       <tr key={alert.logId || `${alert.portfolioId}-${idx}`} className="alert-row">
-                        <td>PF-{alert.portfolioId}</td>
-                        <td className="findings">{alert.findings}</td>
-                        <td><span className="alert-tag">{alert.regulationType}</span></td>
+                        <td data-label="Portfolio ID">PF-{alert.portfolioId}</td>
+                        <td data-label="Description" className="findings">{alert.findings}</td>
+                        <td data-label="Regulation" className="alert-type-cell"><span className="alert-tag">{alert.regulationType}</span></td>
                       </tr>
                     ))
                   ) : (

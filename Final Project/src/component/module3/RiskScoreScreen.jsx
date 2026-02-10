@@ -343,14 +343,14 @@ export default function RiskScoreScreen() {
               {history.length > 0 ? (
                 history.map((h, i) => (
                   <tr key={i}>
-                    <td>{h.id}</td>
-                    <td><strong>{h.score}</strong></td>
-                    <td>
+                    <td data-label="Risk ID">{h.id}</td>
+                    <td data-label="Score"><strong>{h.score}</strong></td>
+                    <td data-label="Level">
                       <span className={`status-tag ${getRiskLevelDetails(h.score).className}`}>
                         {h.level}
                       </span>
                     </td>
-                    <td>{h.date}</td>
+                    <td data-label="Logged Date">{h.date}</td>
                   </tr>
                 ))
               ) : (

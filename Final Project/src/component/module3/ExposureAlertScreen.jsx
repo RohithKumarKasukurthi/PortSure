@@ -371,16 +371,15 @@ export default function ExposureAlertScreen() {
               <tbody>
                 {exposure.map((e) => (
                   <tr key={e.name}>
-                    <td style={{ fontWeight: "600" }}>{e.name}</td>
-                    <td className={e.value > limits[e.name] ? "text-danger" : ""}>
+                    <td data-label="Asset Type" style={{ fontWeight: "600" }}>{e.name}</td>
+                    <td data-label="Actual Exposure" className={e.value > limits[e.name] ? "text-danger" : ""}>
                       {e.value.toFixed(2)}%
                     </td>
-                    <td>{limits[e.name]}%</td>
-                    <td>
+                    <td data-label="Policy Limit">{limits[e.name]}%</td>
+                    <td data-label="Status">
                       <span
-                        className={`status-badge ${
-                          e.value > limits[e.name] ? "breach" : "ok"
-                        }`}
+                        className={`status-badge ${e.value > limits[e.name] ? "breach" : "ok"
+                          }`}
                       >
                         {e.value > limits[e.name] ? "BREACH" : "OK"}
                       </span>
@@ -409,10 +408,10 @@ export default function ExposureAlertScreen() {
                 {alertHistory.length > 0 ? (
                   alertHistory.map((alert) => (
                     <tr key={alert.alertId}>
-                      <td>{alert.assetType}</td>
-                      <td className="text-danger">{alert.exposureValue}%</td>
-                      <td style={{ color: "#666" }}>{safeDate(alert.timestamp)}</td>
-                      <td style={{ textAlign: "center" }}>
+                      <td data-label="Asset Class">{alert.assetType}</td>
+                      <td data-label="Value at Breach" className="text-danger">{alert.exposureValue}%</td>
+                      <td data-label="Date & Time" style={{ color: "#666" }}>{safeDate(alert.timestamp)}</td>
+                      <td data-label="Manage" style={{ textAlign: "center" }}>
                         <button
                           onClick={() => handleDeleteAlert(alert.alertId)}
                           className="delete-btn-style"

@@ -26,8 +26,8 @@ const LoginPage1 = () => {
     setIsLoading(true);
 
     try {
-      const endpoint = role === 'Investor' 
-        ? 'http://localhost:8302/api/investors/login' 
+      const endpoint = role === 'Investor'
+        ? 'http://localhost:8302/api/investors/login'
         : 'http://localhost:8307/api/internal/login';
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -37,13 +37,13 @@ const LoginPage1 = () => {
         body: JSON.stringify({
           email: email,
           password: password,
-          role: role 
+          role: role
         }),
       });
 
       if (response.ok) {
         const userData = await response.json();
-        
+
         console.log("Login Successful:", userData);
 
         localStorage.setItem('user', JSON.stringify(userData));
@@ -55,7 +55,7 @@ const LoginPage1 = () => {
           },
         });
       } else {
-       
+
         const errorMsg = await response.text();
         alert(errorMsg || "Invalid credentials. Please try again.");
       }
@@ -69,8 +69,8 @@ const LoginPage1 = () => {
 
   const handleRoleChange = (newRole) => {
     setRole(newRole);
-    setEmail('');    
-    setPassword(''); 
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -82,8 +82,7 @@ const LoginPage1 = () => {
               <img src={logo1} alt="PortSure Large Logo" className="hero-logo-large" />
             </div>
           </div>
-          <h2 className="brand-title"> Login</h2>
-          <br/>
+          <h2 className="brand-title">Login</h2>
         </div>
 
         <div className="role-selector">
@@ -136,7 +135,7 @@ const LoginPage1 = () => {
           <button type="submit" className="login-btn" disabled={isLoading}>
             {isLoading ? "Signing in..." : `Sign In as ${role}`}
           </button>
-          
+
           <div className="back-button-container">
             <Link to="/" className="back-btn-link">
               ← Back to Home

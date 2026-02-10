@@ -1,14 +1,9 @@
-/* Hero Section Container */
 .home-container {
-  text-align: center;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Keeps image steady while scrolling */
-  color:black;
-  /* 1. More transparent background (0.8 changed to 0.4) */
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
-    url("../logo/back.png");
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at top right, var(--bg-app), var(--bg-surface));
+  overflow-x: hidden;
 }
 
 .home-main-hero {
@@ -16,78 +11,148 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px; /* Increased padding for more breathing room */
+  padding: var(--space-2xl) var(--space-md);
+  position: relative;
 }
 
-/* Content Wrapper */
+.home-main-hero::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+  opacity: 0.4;
+  z-index: 0;
+}
+
 .hero-content {
-  max-width: 800px;
-  animation: fadeIn 1.2s ease-out;
-  color:black;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  position: relative;
+  z-index: 1;
+  animation: fadeIn var(--transition-base);
 }
 
-/* Large Central Logo */
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 .hero-logo-large {
-  width: 150px;
+  width: 240px;
   height: auto;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+  animation: float 6s ease-in-out infinite;
 }
 
-/* Text Styling - UPDATED TO DARK COLORS */
+.hero-text {
+  flex: 1.5;
+  text-align: left;
+}
+
 .hero-title {
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-weight: 800;
-  color: #0b0b0c; /* Dark Slate instead of White */
-  margin-bottom: 10px;
-  letter-spacing: -1px;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.05em;
+  font-family: 'Outfit', sans-serif;
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
-  color: #111214; /* Sophisticated dark grey */
+  font-size: 1.5rem;
+  color: var(--text-main);
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-lg);
+  line-height: 1.2;
 }
 
 .hero-divider {
-  width: 60px;
-  height: 4px;
-  background-color: #08b363; /* PortSure Green for a pop of color */
-  margin: 20px auto;
-  border-radius: 2px;
+  width: 80px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 3px;
+  margin-bottom: var(--space-lg);
 }
 
 .hero-description {
-  font-size: 1.3rem;
-  font-weight: 30px;
-  font-family: bold;
-  color: #0f0f12; /* Readable dark grey */
+  font-size: 1.125rem;
+  color: var(--text-muted);
   line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 500px;
 }
 
-/* --- BUTTON & NAVIGATION (DARK THEME) --- */
 .nav-actions .admin {
   text-decoration: none;
-  font-family: sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: #ffffff;
-  background-color: #16181c; /* Deep Midnight Blue/Dark Navy */
-  padding: 10px 24px;
-  border-radius: 6px;
-  transition: all 0.2s ease-in-out;
-  display: inline-block;
-  border: 1px solid #0f172a;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-inverse);
+  background: var(--primary);
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-lg);
 }
 
 .nav-actions .admin:hover {
-  background-color: #1e293b; /* Slightly lighter on hover */
+  background: var(--primary-light);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
 }
 
-/* Footer Styling */
+@keyframes float {
 
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Tablet & Mobile */
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-xl);
+  }
+
+  .hero-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .hero-logo-large {
+    width: 180px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+}

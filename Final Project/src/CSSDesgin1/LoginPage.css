@@ -1,213 +1,192 @@
-/* Page background */
 .login-page {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  text-align: center;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: black;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
-    url("../logo/back.png");
+  justify-content: center;
+  padding: var(--space-md);
+  background: radial-gradient(circle at top left, var(--bg-app), var(--bg-surface));
+  position: relative;
+  overflow: hidden;
 }
 
-/* Card styling */
+.login-page::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 40%;
+  height: 40%;
+  background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+  opacity: 0.4;
+  z-index: 0;
+}
+
 .auth-card {
-  background: rgba(255, 255, 255, 0.2); 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 32px;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
-  width: 380px;
-  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-xl);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  z-index: 1;
+  animation: fadeIn var(--transition-base);
 }
 
-/* Role selector tabs */
+.brand {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.hero-logo-large {
+  height: 64px;
+  width: auto;
+  margin-bottom: var(--space-md);
+}
+
+.brand-title {
+  font-size: 1.75rem;
+  color: var(--text-heading);
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+
 .role-selector {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
-  background: #819fc7;
-  padding: 6px;
-  border-radius: 8px;
+  background: var(--bg-surface);
+  padding: var(--space-xs);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
 }
 
-.role-selector button {
+.role-tab {
   flex: 1;
-  border: none;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.875rem;
   font-weight: 600;
-  background: transparent;
-  transition: all 0.2s ease-in-out;
+  color: var(--text-muted);
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: var(--transition-fast);
 }
 
-.role-selector button:hover {
-  background: #cbd5e1;
+.role-tab:hover {
+  color: var(--text-heading);
 }
 
-.role-selector button.active {
-  background: #6e6ab7;
-  color: #ffffff;
+.role-tab.active {
+  background: var(--bg-card);
+  color: var(--text-heading);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Input fields */
 .input-field {
-  margin-bottom: 18px;
-  text-align: left;
+  margin-bottom: var(--space-md);
 }
 
 .input-field label {
   display: block;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
-  margin-bottom: 6px;
-  color: #374151;
+  margin-bottom: var(--space-xs);
+  color: var(--text-main);
 }
 
 .input-field input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  box-sizing: border-box;
-  font-size: 14px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  padding: var(--space-md);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: var(--transition-fast);
+  background: var(--bg-app);
 }
 
 .input-field input:focus {
-  border-color: #7774b5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
   outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+  background: var(--bg-card);
 }
 
-/* Password wrapper */
 .password-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
-.toggle-visibility {
-  background: #f3f4f6;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease;
+.icon-toggle {
+  position: absolute;
+  right: var(--space-md);
+  background: none;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  height: 100%;
 }
 
-.toggle-visibility:hover {
-  background: #e5e7eb;
-}
-
-/* Admin key hint */
-.field-hint {
-  font-size: 12px;
-  color: #6b7280;
-  margin-top: 4px;
-}
-
-/* Login button */
 .login-btn {
   width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #837edc, #797ab8);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 15px;
-  box-shadow: 0 6px 12px rgba(79, 70, 229, 0.25);
-  transition: transform 0.2s ease, filter 0.2s ease;
+  padding: var(--space-md);
+  margin-top: var(--space-md);
+  background: var(--primary);
+  color: var(--text-inverse);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
 }
 
-.login-btn:hover {
-  filter: brightness(1.05);
+.login-btn:hover:not(:disabled) {
+  background: var(--primary-light);
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Registration link */
-.reg-link {
-  margin-top: 20px;
-  font-size: 14px;
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.back-button-container {
+  margin-top: var(--space-lg);
   text-align: center;
-  color: #374151;
+}
+
+.back-btn-link {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.back-btn-link:hover {
+  color: var(--primary);
+}
+
+.reg-link {
+  margin-top: var(--space-lg);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
 }
 
 .reg-link a {
-  color: #7672c6;
-  font-weight: 600;
-  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
 }
 
-.reg-link a:hover {
-  text-decoration: underline;
-}
-
-/* Icon button */
-.icon-toggle {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 42px;
-  width: 44px;
-  background: #f3f4f6;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  padding: 0;
-}
-
-.icon-toggle:hover {
-  background: #e5e7eb;
-  border-color: #c7d2fe;
-}
-
-.icon-toggle:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
-}
-
-.icon-toggle:hover svg path,
-.icon-toggle:hover svg circle {
-  stroke: #374151;
-}
-
-/* Responsive */
+/* Response Fix for small screens */
 @media (max-width: 480px) {
   .auth-card {
-    width: 90%;
-    padding: 24px;
+    padding: var(--space-lg);
   }
-}
 
-/* --- FIX FOR DOUBLE EYE ICON --- */
-/* Remove default browser eye icon in Edge/IE */
-input[type="password"]::-ms-reveal,
-input[type="password"]::-ms-clear {
-  display: none;
-}
-
-/* Remove default browser eye icon in Chrome/Safari */
-input[type="password"]::-webkit-contacts-auto-fill-button,
-input[type="password"]::-webkit-credentials-auto-fill-button {
-  visibility: hidden;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
+  .role-tab {
+    font-size: 0.75rem;
+    padding: var(--space-sm) var(--space-xs);
+  }
 }
